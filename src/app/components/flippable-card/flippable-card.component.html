@@ -43,7 +43,7 @@
         <div #container class="next_container" (click)="advancePage()">
           <ng-template [ngIf]="next">
             <p class="next">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.8 -31 83 40" height="4.7vw">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.8 -31 83 40" class="responsive-next-size">
                 <defs>
                   <linearGradient id="left-to-right">
                     <stop offset="0" stop-color="#fff">
@@ -76,17 +76,17 @@
                                     'but this is honestly the most \'\'complex\'\' thing I\'ve ever done by myself so^100 I\'m still kinda proud of it,^150 and,^150 of course,^200 I hope you liked it as well!^500' +
                                     '\nThanks for everything you\'ve ever done for me and for everyone else, ^100 Ma!^200 As I\'ve already said before,^100 adore you!^150 And I\'m pretty sure everyone else at Undergrounds do too!^700' +
                                     '\nFrom your dearest friend,^700']"
-                        (completed)="test=true">
+                        (completed)="signLetter=true">
             <p class="typing"></p>
           </ngx-typed-js>
-          <p style="text-align: center">
-            <ng-template [ngIf]="test">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.1 -1.7 7.5 9.8" height="4vw">
+          <p class="final_signature">
+            <ng-template [ngIf]="signLetter">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.1 -1.7 7.5 9.8" class="signature-size">
                 <clipPath id="MSignature">
                   <path d="M 3.3436 7.3546 Q 2.0685 7.4321 2.5787 -0.1961 C 1.8379 0.1931 1.0225 6.5622 0.6776 7.055 C 0.2341 7.8435 -0.204 5.7751 -0.1572 0.2871 C -2.6503 4.4347 -2.7636 7.8527 -4 8 L 0 -1 C -0.743 -1.5138 -2.5181 -0.6451 -2 2 C -5.2944 1.1777 0.7504 -4.5222 0.4664 0.2649 C 0.6718 13.2951 1.0526 -2.6359 3.1637 -1.1525 Q 2.6162 3.5984 3.3435 7.3541"
                   />
                 </clipPath>
-                <path id="penpath" d="M -1.995 2.0015 C -3.8137 -0.2865 0.6059 -3.0633 0.1561 -0.2473 C -0.7052 0.0495 -3.3256 7.4219 -3.9905 8.0086 C -2.7389 6.1899 -0.6856 0.0495 0.1357 -0.2243 C 0.0966 3.0219 0.2139 6.229 0.6246 6.5224 C 1.1915 3.9215 2.091 -0.635 2.5603 -0.5763 C 3.1275 -0.5568 2.1301 5.4077 3.3426 7.3437" class="MSignature mask"/>
+                <path id="penpath" d="M -1.995 2.0015 C -3.8137 -0.2865 0.9877 -2.9311 -0.1132 -0.5024 C -0.6063 0.2222 -3.7467 7.8708 -3.9905 8.0086 C -2.6642 6.5861 -1.1773 0.8646 0.1357 -0.2243 C 0.0966 3.0219 0.2139 6.229 0.6246 6.5224 C 1.1915 3.9215 2.091 -0.635 2.5603 -0.5763 C 3.1275 -0.5568 2.1301 5.4077 3.3426 7.3437" class="MSignature mask"/>
               </svg>
             </ng-template>
           </p>

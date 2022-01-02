@@ -15,7 +15,7 @@ export class FlippableCardComponent implements OnInit {
   bday: Boolean = false;
   msg1_end: Boolean = false;
   next: Boolean = false;
-  test = false;
+  signLetter: Boolean = false;
 
   constructor() { }
 
@@ -40,15 +40,5 @@ export class FlippableCardComponent implements OnInit {
         this.startTyping2 = true
       })
     }
-  }
-
-  signLetter(): void {
-    const M1 = document.getElementById('M-1')
-    const M2 = document.getElementById('M-2')
-
-    M1.classList.add('sign')
-    M1.addEventListener('animationend', () => {
-      M2.classList.add('sign')
-    })
   }
 }

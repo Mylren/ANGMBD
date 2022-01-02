@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Waterfall');
 
 $front_bg: url('../../../assets/flip_cards/front_bg.gif');
+$front_bg_mobile: url('../../../assets/flip_cards/front_bg_mobile.gif');
 $back_bg: url('../../../assets/flip_cards/back_bg.png');
+$back_bg_mobile: url('../../../assets/flip_cards/back_bg_mobile.png');
 
 :host {
-  font-size: 2.3vw;
+  font-size: 3vw;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------*/
@@ -56,7 +58,7 @@ $back_bg: url('../../../assets/flip_cards/back_bg.png');
   place-items: center;
 
   @include mobile {
-    background-size: 280%;
+    background: $front_bg_mobile center;
   }
 }
 
@@ -66,6 +68,12 @@ $back_bg: url('../../../assets/flip_cards/back_bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   cursor: default;
+
+  @include mobile {
+    background: $back_bg_mobile;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
 }
 
 .flipped {
@@ -89,6 +97,11 @@ $back_bg: url('../../../assets/flip_cards/back_bg.png');
   p {
     margin: 0;
   }
+
+  @include mobile {
+    padding-top: 10%;
+    font-size: 2.35em;
+  }
 }
 
 .bday-message {
@@ -100,19 +113,53 @@ $back_bg: url('../../../assets/flip_cards/back_bg.png');
   text-align: center;
   width: 9vw;
   height: 4.7vw;
-  margin: 0.3em auto 0;
+  margin: 1.5em auto 0;
   color: black;
   cursor: pointer;
   transform: translateY(-1em);
+
+  @include mobile {
+    width: 28.72vw;
+    height: 15vw;
+  }
 }
 
 .next {
   padding-top: 5%;
   text-align: center;
+
+  @include mobile {
+    padding-top: 6%;
+  }
+}
+
+.responsive-next-size {
+  height: 4.7vw;
+
+  @include mobile {
+    height: 15vw;
+  }
+}
+
+.final_signature {
+  text-align: center;
+  transform: translateY(-0.4em);
+
+  @include mobile {
+    text-align: end;
+  }
+}
+
+.signature-size {
+  height: 7.5vw;
+
+  @include mobile{
+    height: 15vw;
+  }
 }
 /* *************** */
 
-/* ***** SETA PRÓXIMA PÁGINA ***** */
+/* ***** NEXT PAGE ARROW ***** */
 .arrow_label {
   transform: translateY(-0.8em);
 }
@@ -134,7 +181,7 @@ $back_bg: url('../../../assets/flip_cards/back_bg.png');
 }
 /* *************** */
 
-/* ***** ANIMAÇÃO PRÓXIMA PÁGINA ***** */
+/* ***** CLEAR CURRENT PAGE ***** */
 .delete {
   animation: fade 0.7s ease-in-out forwards;
 }
@@ -149,16 +196,16 @@ $back_bg: url('../../../assets/flip_cards/back_bg.png');
 }
 /* *************** */
 
-/* ***** ASSINATURA ***** */
+/* ***** SIGNATURE ***** */
 .MSignature {
   fill: none;
   stroke: white;
-  stroke-width: 0.58;
+  stroke-width: 0.68;
   stroke-linecap: round;
 
   stroke-dasharray: 100 100;
   stroke-dashoffset: 100;
-  animation: sign 6s ease-in-out forwards;
+  animation: sign 4s ease-in-out forwards;
 }
 
 .mask {
