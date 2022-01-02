@@ -1,0 +1,97 @@
+<div class="container">
+  <div [ngClass]="isFlipped ? 'flipped' : ''" class="card">
+    <div class="front" (click)="flip()">
+      <ng-content select="flippable-card-front"></ng-content>
+    </div>
+    <div class="back">
+      <div #letter class="letter">
+        <ng-template [ngIf]="startTyping">
+          <ngx-typed-js [typeSpeed]="32"
+                        [startDelay]="1200"
+                        [showCursor]="false"
+                        [contentType]="'html'"
+                        [strings]="['Hi there, Ma! ^500 You good? ^500 Hoping you\'re having a great time today ' +
+                      'since, ^150 y\'know, ^150 it\'s YOUR day...^700' +
+                      '\nWell, ^100 you and I both know I\'m not that good with words, text, and this kind of stuff, so uhmmm...' +
+                      '\n<br>']"
+                        (completed)="bday=true">
+            <p class="typing"></p>
+          </ngx-typed-js>
+        </ng-template>
+        <ng-template [ngIf]="bday">
+          <ngx-typed-js [typeSpeed]="32"
+                        [startDelay]="500"
+                        [showCursor]="false"
+                        [contentType]="'html'"
+                        [strings]="['HAPPY   BIRTHDAY' +
+                                    '\n<br>']"
+                        (completed)="msg1_end = true">
+            <p class="bday-message typing"></p>
+          </ngx-typed-js>
+        </ng-template>
+        <ng-template [ngIf]="msg1_end">
+          <ngx-typed-js [typeSpeed]="32"
+                        [startDelay]="750"
+                        [showCursor]="false"
+                        [contentType]="'html'"
+                        [strings]="['I just wanted to let you know that,^150 even though you might not completely believe me, ^150' +
+                                    'you\'re an awesome person,^150 and I kinda wanted that you yourself would feel that way more often...^700']"
+                        (completed)="showNextArrow()">
+            <p class="typing"></p>
+          </ngx-typed-js>
+        </ng-template>
+        <div #container class="next_container" (click)="advancePage()">
+          <ng-template [ngIf]="next">
+            <p class="next">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.8 -31 83 40" height="4.7vw">
+                <defs>
+                  <linearGradient id="left-to-right">
+                    <stop offset="0" stop-color="#fff">
+                      <animate dur="1s" attributeName="offset" fill="freeze" from="0" to="1"/>
+                    </stop>
+                    <stop offset="0" stop-color="#000">
+                      <animate dur="1s" attributeName="offset" fill="freeze" from="0" to="1"/>
+                    </stop>
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 74.3756 -4.647 C 73.5863 -9.6696 61.0595 -21.9152 53.7365 -12.1361 C 33.1718 -31.2309 9.2756 9.2619 -2.9164 6.5046 C -10.4097 3.8906 -2.7421 -8.2642 1.9632 -6.5652 C 5.9644 -5.0414 2.0631 1.1825 1.0965 -0.8393 C 3.9153 6.6066 8.3711 -9.3999 -0.0321 -7.0352 C -8.6798 -4.6966 -11.0589 10.3608 5.1911 8.226 C 18.2172 7.0062 29.2372 -20.4924 53.5443 -11.2888 C 57.2272 -0.342 67.9898 -7.7323 74.3756 -4.647 M 53.6429 -12.2226 C 44.2757 -31.5961 2.5679 -24.6251 19.2373 -6.8278 C 25.4064 -0.5152 41.5466 3.9324 41.3314 -7.1147 C 47.644 -4.1736 42.264 9.5994 22.4653 -3.2411 C -13.5231 -32.7195 49.334 -40.7539 53.7365 -12.1361"
+                  fill="url(#left-to-right)"/>
+              </svg>
+            </p>
+            <p class="arrow_label">next</p>
+
+          </ng-template>
+        </div>
+      </div>
+      <div #letter2 class="letter">
+        <ng-template [ngIf]="startTyping2">
+          <ngx-typed-js [typeSpeed]="32"
+                        [startDelay]="800"
+                        [showCursor]="false"
+                        [contentType]="'html'"
+                        [strings]="['I was actually planning to buy you Mike\'s sketchbook in secret to see your reaction when it arrived at your home, but, ^150' +
+                                    'when I was reading through their FAQ,^150 I saw that they don\'t currently ship to Brazil, so... ^300 yeah...^600' +
+                                    '\nInstead, ^150 I tried putting just a bit more effort into this letter!^200 I know this isn\'t near perfect,^150 ' +
+                                    'but this is honestly the most \'\'complex\'\' thing I\'ve ever done by myself so^100 I\'m still kinda proud of it,^150 and,^150 of course,^200 I hope you liked it as well!^500' +
+                                    '\nThanks for everything you\'ve ever done for me and for everyone else, ^100 Ma!^200 As I\'ve already said before,^100 adore you!^150 And I\'m pretty sure everyone else at Undergrounds do too!^700' +
+                                    '\nFrom your dearest friend,^700']"
+                        (completed)="test=true">
+            <p class="typing"></p>
+          </ngx-typed-js>
+          <p style="text-align: center">
+            <ng-template [ngIf]="test">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.1 -1.7 7.5 9.8" height="4vw">
+                <clipPath id="MSignature">
+                  <path d="M 3.3436 7.3546 Q 2.0685 7.4321 2.5787 -0.1961 C 1.8379 0.1931 1.0225 6.5622 0.6776 7.055 C 0.2341 7.8435 -0.204 5.7751 -0.1572 0.2871 C -2.6503 4.4347 -2.7636 7.8527 -4 8 L 0 -1 C -0.743 -1.5138 -2.5181 -0.6451 -2 2 C -5.2944 1.1777 0.7504 -4.5222 0.4664 0.2649 C 0.6718 13.2951 1.0526 -2.6359 3.1637 -1.1525 Q 2.6162 3.5984 3.3435 7.3541"
+                  />
+                </clipPath>
+                <path id="penpath" d="M -1.995 2.0015 C -3.8137 -0.2865 0.6059 -3.0633 0.1561 -0.2473 C -0.7052 0.0495 -3.3256 7.4219 -3.9905 8.0086 C -2.7389 6.1899 -0.6856 0.0495 0.1357 -0.2243 C 0.0966 3.0219 0.2139 6.229 0.6246 6.5224 C 1.1915 3.9215 2.091 -0.635 2.5603 -0.5763 C 3.1275 -0.5568 2.1301 5.4077 3.3426 7.3437" class="MSignature mask"/>
+              </svg>
+            </ng-template>
+          </p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

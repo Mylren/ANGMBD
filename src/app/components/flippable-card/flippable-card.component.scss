@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Waterfall');
+
+$front_bg: url('../../../assets/flip_cards/front_bg.gif');
+$back_bg: url('../../../assets/flip_cards/back_bg.png');
+
+:host {
+  font-size: 2.3vw;
+}
+
+/* -------------------------------------------------------------------------------------------------------------------*/
+
+/* ---------- MIXINS ---------- */
+@mixin mobile {
+  @media only screen and (max-width: 600px){
+    @content
+  }
+}
+/* ---------------------------- */
+
+/* ***** MAIN CARD ***** */
+.container {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  perspective: 800px;
+  border-radius: 4px;
+  will-change: transform;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 6px;
+  color: #fff;
+  display: grid;
+}
+
+.front {
+  background: $front_bg center;
+  background-size:110%;
+  place-items: center;
+
+  @include mobile {
+    background-size: 280%;
+  }
+}
+
+.back {
+  transform: rotateY(180deg);
+  background: $back_bg;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: default;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+/* *************** */
+
+/* ***** LETTER ***** */
+.letter{
+  font-family: 'Waterfall', Georgia, 'Times New Roman', Times, serif;
+  font-size: 0.9em;
+
+  padding-top: 8%;
+  padding-left: 12%;
+  padding-right: 12%;
+
+  text-align: left;
+  white-space: break-spaces;
+  line-height: 100%;
+
+  p {
+    margin: 0;
+  }
+}
+
+.bday-message {
+  text-align: center;
+}
+
+.next_container {
+  z-index: 1;
+  text-align: center;
+  width: 9vw;
+  height: 4.7vw;
+  margin: 0.3em auto 0;
+  color: black;
+  cursor: pointer;
+  transform: translateY(-1em);
+}
+
+.next {
+  padding-top: 5%;
+  text-align: center;
+}
+/* *************** */
+
+/* ***** SETA PRÓXIMA PÁGINA ***** */
+.arrow_label {
+  transform: translateY(-0.8em);
+}
+
+.label_show {
+  animation-name: showArrow;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes showArrow {
+  0% {
+    color: black;
+  }
+  100% {
+    color: white;
+  }
+}
+/* *************** */
+
+/* ***** ANIMAÇÃO PRÓXIMA PÁGINA ***** */
+.delete {
+  animation: fade 0.7s ease-in-out forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* *************** */
+
+/* ***** ASSINATURA ***** */
+.MSignature {
+  fill: none;
+  stroke: white;
+  stroke-width: 0.58;
+  stroke-linecap: round;
+
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: 100;
+  animation: sign 6s ease-in-out forwards;
+}
+
+.mask {
+  clip-path: url("#MSignature");
+}
+
+@keyframes sign {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* *************** */

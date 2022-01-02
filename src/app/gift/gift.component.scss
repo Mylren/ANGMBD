@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Waterfall');
+
+$box_color: midnightblue;
+$motif: url("../../assets/gift/star.svg");
+
+body {
+  background: #333;
+  padding-top: 150px;
+}
+
+/* -------------------------------------------------------------------------------------------------------------------*/
+
+/* ---------- MIXINS ---------- */
+@mixin mobile {
+  @media only screen and (max-width: 600px) {
+    @content
+  }
+}
+
+/* ---------------------------- */
+
+/* ---------- PRESENTE ---------- */
+
+.gift {
+  bottom: 0;
+  width: 30vw;
+  margin: 0 auto;
+  cursor: pointer;
+  transform: translateY(8vh);
+
+  @include mobile {
+    width: 100vw;
+  }
+}
+
+.box,
+.lid {
+  //background-position: 4px 2px, 25px 25px;
+  //background-size: 50px 45px;
+  background: $motif midnightblue 2.35vw 2.2vw;
+  background-size: 2.23vw 2.1vw;
+  position: relative;
+  margin: 0 auto;
+
+  @include mobile {
+    background-size: 10.6vw 10.4vw;
+  }
+}
+
+.box {
+  width: 30vw;
+  height: 22.3vw;
+
+  @include mobile {
+    width: 90vw;
+    height: 80vw;
+  }
+}
+
+.lid {
+  width: 30.3vw;
+  height: 4vw;
+  top: 15px;
+  left: 0;
+  transform: translateX(-0.1vw);
+  background-color: rgb(25, 15, 112);
+  box-shadow: 6px 7px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  transform-origin: bottom right;
+  transition: transform ease-out 0.5s;
+
+  @include mobile {
+    width: 90.7vw;
+    height: 14vw;
+    transform: translateX(0);
+  }
+}
+
+.box span, .lid span {
+  position: absolute;
+  display: block;
+  background: rgba(0, 255, 255, 0.8);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.box span:first-child {
+  width: 100%;
+  height: 14%;
+  top: 37%;
+}
+
+.box span:last-child, .lid span {
+  width: 10%;
+  height: 100%;
+  left: 45%;
+
+  @include mobile {
+    width: 13%;
+  }
+}
+
+.lid span {
+  left: 45%;
+}
+
+.content {
+  color: white;
+  text-align: center;
+  position: relative;
+  top: 0.5rem;
+  height: 0;
+  transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.6s;
+  width: 100%;
+}
+
+.content-card {
+  width: 25vw;
+  height: 13vw;
+  margin: auto;
+  transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.6s;
+  transform-origin: center;
+
+  @include mobile {
+    width: 85vw;
+    height: 50vw;
+  }
+}
+
+.card-sign {
+  width: 100%;
+  height: 100%;
+
+  @include mobile {
+    width: 22vw;
+    height: 22vw;
+  }
+}
+
+.signature {
+  will-change: transform;
+  font-size: 2vw;
+  font-family: 'Poiret One', Georgia, 'Times New Roman', Times, serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-47.3%) translateY(-65%);
+
+  @include mobile {
+    font-size: 6vw;
+    transform: translateX(-49%) translateY(-90%);
+  }
+}
+
+/*.card-focused {
+  transform: translateY(-7rem) translateX(-13.3vw);
+  width: 57.5vw;
+  height: 29.9vw;
+
+  @include mobile {
+    transform: translateY(-7rem);
+    width: 95vw;
+    height: 60vw;
+  }
+}*/
+
+/* ------------------------------ */
+
+
+/* ---------- ANIMAÇÕES ---------- */
+
+/* *** HOVER *** */
+.lid_hover {
+  transform: rotateZ(10deg) translateX(0.3rem) translateY(0.5rem);
+}
+
+.content_hover {
+  transform: translateY(-2rem);
+}
+
+.opened_gift_hover {
+  transform: translateY(-7rem);
+}
+
+/* ************* */
+
+
+/* *** CLICK *** */
+.lid_click {
+  transform: rotateZ(180deg) translateY(-570%) translateX(0.6%);
+
+  @include mobile {
+    transform: rotateZ(180deg) translateY(-570%);
+  }
+}
+
+.box_click {
+  animation-name: lift_box;
+  animation-timing-function: cubic-bezier(0.26, 0.43, 0.03, 1.02);
+  animation-duration: .6s;
+}
+
+.box_click-reverse {
+  animation-name: place_box;
+  animation-timing-function: cubic-bezier(0.26, 0.43, 0.03, 1.02);
+  animation-duration: .6s;
+}
+
+.opened_gift_click {
+  animation-name: take_card;
+  animation-timing-function: cubic-bezier(0.26, 0.43, 0.03, 1.02);
+  animation-duration: .6s;
+}
+
+.opened_gift_click-end {
+  animation-name: focus_card;
+  animation-timing-function: cubic-bezier(0.26, 0.43, 0.03, 1.02);
+  animation-duration: .6s;
+  animation-fill-mode: forwards;
+
+  @include mobile {
+    animation-name: focus_card_mobile;
+  }
+}
+
+/* ************* */
+
+
+/* ------------------ KEYFRAMES ------------------ */
+@keyframes lift_box {
+  0% {
+    transform: translateY(0rem);
+  }
+  100% {
+    transform: translateY(-20%);
+  }
+}
+
+@keyframes place_box {
+  0% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0rem);
+  }
+}
+
+@keyframes take_card {
+  0% {
+    transform: translateY(-7rem);
+  }
+
+  100% {
+    transform: translateY(-20rem);
+  }
+}
+
+@keyframes focus_card {
+  0% {
+    transform: translateY(-20rem) translateX(0);
+    width: 25vw;
+    height: 13vw;
+  }
+
+  100% {
+    transform: translateY(-12rem) translateX(-24.3vw);
+    width: 77.5vw;
+    height: 40.3vw;
+  }
+}
+
+/* -------------------------------------------------- */
+
+
+/* ------------------ MOBILE KEYFRAMES ------------------ */
+@keyframes focus_card_mobile {
+  0% {
+    transform: translateY(-20rem);
+    width: 85vw;
+    height: 50vw;
+  }
+
+  100% {
+    transform: translateY(-7rem);
+    width: 95vw;
+    height: 60vw;
+  }
+
+
+}
+
+
+
+

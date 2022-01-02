@@ -1,0 +1,25 @@
+<body>
+<div #gift class="gift"
+     (mouseover)="hoverGift($event)"
+     (mouseleave)="leaveGift($event)"
+     (click)="triggerClick($event)">
+  <div #lid class="lid">
+    <span></span>
+  </div>
+  <div #content class="content">
+    <div #contentcard class="content-card">
+      <flippable-card id="card">
+        <flippable-card-front>
+          <img class="card-sign" src="../../assets/gift/signature.png">
+          <p class="signature">M</p>
+        </flippable-card-front>
+      </flippable-card>
+    </div>
+  </div>
+  <div #box class="box">
+    <span></span>
+    <span></span>
+  </div>
+</div>
+</body>
+
